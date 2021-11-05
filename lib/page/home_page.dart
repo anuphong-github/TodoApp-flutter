@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todoapp/main.dart';
-
+import 'package:todoapp/widget/add_todo_dialog_widget.dart';
 class HomePage extends StatefulWidget{
   @override
   _HomePageState createState() => _HomePageState();
@@ -37,9 +37,18 @@ class _HomePageState extends State<HomePage>{
       ),
       body:tabs[selectedIndex],
       floatingActionButton: FloatingActionButton(
-        onPressed: () {  },
-        child: Icon(Icons.add),
+        shape:RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+        ),
+        backgroundColor: Colors.black,
+        onPressed:() => showDialog(
+            builder: (context) => AddTodoDialogWidget(), context: context,
+        barrierDismissible:false,
       ),
+        child: Icon(Icons.add),
+
+      ),
+
     );
   }
 }
