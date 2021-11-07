@@ -24,6 +24,8 @@ class TodoFormWidget extends StatelessWidget{
         buildTitle(),
         SizedBox(height: 8),
         buildDescription(),
+        SizedBox(height:32),
+        buildButton(),
       ],
     ),
   );
@@ -44,6 +46,8 @@ class TodoFormWidget extends StatelessWidget{
     ),
   );
   Widget buildDescription()=>TextFormField(
+    maxLines: 3,
+    initialValue: description,
     onChanged: onChangedDescription,
     decoration: InputDecoration(
       border: UnderlineInputBorder(),
@@ -51,4 +55,14 @@ class TodoFormWidget extends StatelessWidget{
     ),
   );
 
+  Widget buildButton() => SizedBox(
+    width: double.infinity,
+    child: ElevatedButton(
+      style: ButtonStyle(
+        backgroundColor: MaterialStateProperty.all(Colors.black),
+      ),
+      onPressed: onSavedTodo,
+      child: Text('Save'),
+    ),
+  );
 }
