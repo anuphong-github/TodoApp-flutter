@@ -48,8 +48,16 @@ class TodoWidget extends StatelessWidget{
         Checkbox(
           activeColor: Theme.of(context).primaryColor,
           checkColor: Colors.white,
-          value: todo.idDone,
-          onChanged: (_) {},
+          value: todo.isDone,
+          onChanged: (_) {
+            final provider = Provider.of<TodosProvider>(context,listen: false);
+            final isDone = provider.toggleTodoStatus(todo);
+
+            Utils.showSnackBar(
+              context,
+              isDone ? 'Task completed': 'Task marked incomplete',
+            );
+          },
         ),
         const SizedBox(width: 20),
         Expanded(
@@ -81,7 +89,7 @@ class TodoWidget extends StatelessWidget{
 
   void deleteTodo(BuildContext context,Todo todo){
     final provider = Provider.of<TodosProvider>(context,listen:false);
-    provider.removeTodo(todo);  
+    provider.removeTodo(todo);
     Utils.showSnackBar(context,'Deleted the task');
   }
 }

@@ -8,13 +8,13 @@ class Todo{
   String title;
   String id;
   String description;
-  bool idDone;
+  bool isDone;
 
   Todo({
     required this.createdTime,
     required this.title,
     this.description = '',
     required this.id,
-    this.idDone = false,
+    this.isDone = false,
   });
 }
